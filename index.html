@@ -103,13 +103,13 @@
         scroll-behavior: smooth;
     }
 
-    /* Hero gradient overlay */
+    /* Hero gradient overlay - dark overlay to preserve original image colors */
     .hero-gradient {
-        background: linear-gradient(to right, rgba(246, 247, 252, 0.95) 0%, rgba(246, 247, 252, 0.8) 40%, rgba(246, 247, 252, 0) 100%);
+        background: linear-gradient(to right, rgba(8, 13, 36, 0.75) 0%, rgba(8, 13, 36, 0.5) 40%, rgba(8, 13, 36, 0.1) 100%);
     }
     @media (max-width: 768px) {
         .hero-gradient {
-            background: linear-gradient(to top, rgba(246, 247, 252, 0.95) 0%, rgba(246, 247, 252, 0.7) 50%, rgba(246, 247, 252, 0.3) 100%);
+            background: linear-gradient(to top, rgba(8, 13, 36, 0.85) 0%, rgba(8, 13, 36, 0.5) 40%, rgba(8, 13, 36, 0.15) 100%);
         }
     }
 
@@ -233,7 +233,7 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: #1E45FB;
+        background: linear-gradient(135deg, #1E45FB, #4D6FFC);
         color: white;
         display: flex;
         align-items: center;
@@ -241,8 +241,8 @@
         cursor: pointer;
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
-        box-shadow: 0 4px 20px rgba(30, 69, 251, 0.3);
+        transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 20px rgba(30, 69, 251, 0.35);
         border: none;
     }
     .back-to-top.visible {
@@ -250,8 +250,9 @@
         transform: translateY(0);
     }
     .back-to-top:hover {
-        background: #1636C8;
+        background: linear-gradient(135deg, #1636C8, #1E45FB);
         transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(30, 69, 251, 0.5);
     }
     @media (max-width: 768px) {
         .back-to-top {
@@ -268,7 +269,7 @@
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #1E45FB, #CDF22B);
+        background: linear-gradient(90deg, #1E45FB, #4D6FFC, #7B9AFC, #CDF22B);
         z-index: 999;
         width: 0%;
         transition: width 0.1s linear;
@@ -291,7 +292,7 @@
         transform-style: preserve-3d;
     }
     .tilt-card:hover {
-        box-shadow: 0 20px 40px -8px rgba(30, 69, 251, 0.15);
+        box-shadow: 0 20px 40px -8px rgba(30, 69, 251, 0.18);
     }
 
     /* ===== Typing text effect ===== */
@@ -362,7 +363,8 @@
         left: 0;
         width: 0;
         height: 2px;
-        background: #1E45FB;
+        background: linear-gradient(90deg, #1E45FB, #4D6FFC);
+        border-radius: 2px;
         transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .nav-link:hover::after,
@@ -412,6 +414,211 @@
         background: #b4b8c8;
         border-radius: 999px;
     }
+
+    /* ===== CONTACT SECTION - Premium Dark Design ===== */
+    .contact-section {
+        position: relative;
+        background: linear-gradient(135deg, #080d24 0%, #0d1640 30%, #131f5c 60%, #0e1a4e 100%);
+        overflow: hidden;
+    }
+    .contact-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(123, 154, 252, 0.5), rgba(205, 242, 43, 0.5), transparent);
+    }
+
+    /* Animated floating orbs */
+    .contact-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        animation: orbFloat 8s ease-in-out infinite;
+        pointer-events: none;
+    }
+    .contact-orb-1 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, #1E45FB, transparent);
+        top: -100px;
+        right: -100px;
+        animation-delay: 0s;
+    }
+    .contact-orb-2 {
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, #CDF22B, transparent);
+        bottom: -80px;
+        left: -80px;
+        animation-delay: -3s;
+    }
+    .contact-orb-3 {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, #4D6FFC, transparent);
+        top: 50%;
+        left: 50%;
+        animation-delay: -5s;
+    }
+    @keyframes orbFloat {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(30px, -20px) scale(1.05); }
+        50% { transform: translate(-20px, 30px) scale(0.95); }
+        75% { transform: translate(10px, 10px) scale(1.02); }
+    }
+
+    /* Glassmorphism contact card */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 1rem;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 0 30px -5px rgba(30, 69, 251, 0.15);
+    }
+
+    /* Contact icon container */
+    .contact-icon-wrap {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .glass-card:hover .contact-icon-wrap {
+        transform: scale(1.1) rotate(-3deg);
+        box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* WhatsApp CTA button */
+    .cta-whatsapp-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        color: white;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        width: 100%;
+    }
+    .cta-whatsapp-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.6s ease;
+    }
+    .cta-whatsapp-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35);
+    }
+    .cta-whatsapp-btn:hover::before {
+        left: 100%;
+    }
+    .cta-whatsapp-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Map embed wrapper */
+    .map-wrapper {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .map-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        pointer-events: none;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Section divider wave */
+    .section-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+    }
+    .section-wave svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 60px;
+    }
+    @media (min-width: 768px) {
+        .section-wave svg {
+            height: 80px;
+        }
+    }
+
+    /* ===== Footer ===== */
+    .site-footer {
+        background: #060a1e;
+        position: relative;
+    }
+    .site-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(123, 154, 252, 0.2), transparent);
+    }
+
+    /* ===== Gradient text ===== */
+    .gradient-text {
+        background: linear-gradient(135deg, #7B9AFC 0%, #CDF22B 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* ===== Sparkle animation ===== */
+    @keyframes sparkle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+    }
+    .sparkle-dot {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(123, 154, 252, 0.6);
+        animation: sparkle 3s ease-in-out infinite;
+        pointer-events: none;
+    }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
@@ -457,19 +664,19 @@
 </div>
 <div class="relative z-10 max-w-container-max mx-auto px-4 md:px-margin-desktop w-full">
     <div class="max-w-2xl">
-        <span class="reveal font-label-md text-label-md text-primary uppercase tracking-[0.2em] mb-4 block">Selamat Datang di Surga Tersembunyi</span>
-        <h1 class="reveal delay-100 font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6 leading-tight">
+        <span class="reveal font-label-md text-label-md text-[#CDF22B] uppercase tracking-[0.2em] mb-4 block drop-shadow-md">Selamat Datang di Surga Tersembunyi</span>
+        <h1 class="reveal delay-100 font-headline-xl text-headline-xl-mobile md:text-headline-xl text-white mb-6 leading-tight drop-shadow-lg">
             Jelajahi Keindahan <br/> Desa Tugurejo
         </h1>
-        <p class="reveal delay-200 font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed text-[15px] md:text-[18px]">
+        <p class="reveal delay-200 font-body-lg text-body-lg text-white/80 mb-8 leading-relaxed text-[15px] md:text-[18px] drop-shadow-md">
             Temukan harmoni antara alam yang asri dan keramahan budaya lokal. Dari puncak gunung yang menantang hingga pantai yang menenangkan, Tugurejo menawarkan pengalaman petualangan yang terorganisir dan tak terlupakan.
         </p>
         <div class="reveal delay-300 flex flex-col sm:flex-row gap-4">
-            <a href="#destinations" class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md transition-all hover:bg-primary-container hover:shadow-lg hover:-translate-y-1 active:translate-y-0">
+            <a href="#destinations" class="inline-flex items-center justify-center gap-2 bg-white text-[#0d1640] px-8 py-4 rounded-lg font-label-md text-label-md transition-all hover:bg-[#CDF22B] hover:shadow-lg hover:-translate-y-1 active:translate-y-0">
                 <span class="material-symbols-outlined text-[20px]">explore</span>
                 Mulai Jelajahi
             </a>
-            <a href="#video-exploration" class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-lg font-label-md text-label-md transition-all hover:bg-primary/5 hover:-translate-y-1 active:translate-y-0">
+            <a href="#video-exploration" class="inline-flex items-center justify-center gap-2 border-2 border-white/60 text-white px-8 py-4 rounded-lg font-label-md text-label-md transition-all hover:bg-white/10 hover:border-white hover:-translate-y-1 active:translate-y-0 backdrop-blur-sm">
                 <span class="material-symbols-outlined text-[20px]">play_circle</span>
                 Tonton Video
             </a>
@@ -478,15 +685,15 @@
 </div>
 <!-- Scroll indicator -->
 <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 float-animation">
-    <span class="font-label-md text-label-md text-on-surface-variant/60 text-[11px] tracking-widest uppercase">Scroll</span>
-    <div class="w-6 h-10 border-2 border-on-surface-variant/30 rounded-full flex justify-center pt-2">
-        <div class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"></div>
+    <span class="font-label-md text-label-md text-white/50 text-[11px] tracking-widest uppercase">Scroll</span>
+    <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+        <div class="w-1.5 h-1.5 bg-[#CDF22B] rounded-full animate-bounce"></div>
     </div>
 </div>
 </header>
 
 <!-- Destination Gallery Section -->
-<section class="py-16 md:py-24 bg-surface" id="destinations">
+<section class="py-16 md:py-28 bg-surface" id="destinations">
 <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
     <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-10 md:mb-16 gap-6">
         <div class="max-w-xl">
@@ -522,7 +729,7 @@
         <!-- Gunung Gareng -->
         <div class="reveal delay-200 tilt-card group flex flex-col bg-white rounded-xl overflow-hidden natural-shadow cursor-pointer" data-dest="gunung-gareng" id="card-gunung-gareng">
             <div class="relative aspect-[3/4] sm:aspect-[3/4] overflow-hidden shine-effect">
-                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Wisata Gunung Gareng - Spot sunset dan panorama perbukitan" src="gununggareng.jpeg" loading="lazy"/>
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Wisata Gunung Gareng - Spot sunset dan panorama perbukitan" src="gununggareng1.jpeg" loading="lazy"/>
                 <div class="absolute top-4 left-4">
                     <span class="bg-primary/20 backdrop-blur-md text-primary px-3 py-1.5 rounded-full font-label-md text-[11px] md:text-[12px] uppercase tracking-wider">🌅 Sunset</span>
                 </div>
@@ -541,7 +748,7 @@
         <!-- Puncak Kopel -->
         <div class="reveal delay-300 tilt-card group flex flex-col bg-white rounded-xl overflow-hidden natural-shadow cursor-pointer sm:col-span-2 md:col-span-1" data-dest="puncak-kopel" id="card-puncak-kopel">
             <div class="relative aspect-[3/4] sm:aspect-[2/1] md:aspect-[3/4] overflow-hidden shine-effect">
-                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Puncak Kopel - Gardu pandang dengan view multi-pantai" src="puncakkopel.jpeg" loading="lazy"/>
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Puncak Kopel - Gardu pandang dengan view multi-pantai" src="puncakkopel1.jpeg" loading="lazy"/>
                 <div class="absolute top-4 left-4">
                     <span class="bg-tertiary/20 backdrop-blur-md text-tertiary px-3 py-1.5 rounded-full font-label-md text-[11px] md:text-[12px] uppercase tracking-wider">👁️ Viewpoint</span>
                 </div>
@@ -562,7 +769,7 @@
 </section>
 
 <!-- Video Exploration Section -->
-<section class="py-16 md:py-24 bg-surface-container-low" id="video-exploration">
+<section class="relative py-16 md:py-28 bg-surface-container-low" id="video-exploration">
 <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
     <div class="max-w-xl mb-10 md:mb-16">
         <h2 class="reveal font-headline-lg text-headline-md md:text-headline-lg text-on-surface mb-4">Cuplikan Video Destinasi</h2>
@@ -608,52 +815,137 @@
 </div>
 </section>
 
-<!-- Footer -->
-<footer class="w-full py-10 md:py-12 bg-surface-container-highest" id="contact">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-gutter px-4 md:px-margin-desktop max-w-container-max mx-auto">
-    <div class="reveal flex flex-col gap-4">
-        <div class="font-headline-md text-[20px] md:text-headline-md text-primary">Desa Tugurejo</div>
-        <p class="font-body-md text-[14px] md:text-body-md text-on-surface-variant max-w-xs leading-relaxed">
-            Membawa Anda lebih dekat dengan alam melalui pariwisata berkelanjutan dan komunitas lokal yang berdaya.
+<!-- ============================================ -->
+<!-- HUBUNGI KAMI - Premium Contact Section -->
+<!-- ============================================ -->
+<section class="contact-section py-20 md:py-32" id="contact">
+<!-- Animated background orbs -->
+<div class="contact-orb contact-orb-1"></div>
+<div class="contact-orb contact-orb-2"></div>
+<div class="contact-orb contact-orb-3"></div>
+
+<!-- Decorative sparkle dots -->
+<div class="sparkle-dot" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+<div class="sparkle-dot" style="top: 25%; right: 15%; animation-delay: 1s;"></div>
+<div class="sparkle-dot" style="bottom: 30%; left: 25%; animation-delay: 2s;"></div>
+<div class="sparkle-dot" style="top: 60%; right: 30%; animation-delay: 0.5s;"></div>
+<div class="sparkle-dot" style="bottom: 15%; right: 10%; animation-delay: 1.5s;"></div>
+
+<div class="relative z-10 max-w-container-max mx-auto px-4 md:px-margin-desktop">
+    <!-- Section Header -->
+    <div class="text-center mb-12 md:mb-20">
+        <span class="reveal font-label-md text-label-md text-[#7B9AFC] uppercase tracking-[0.25em] mb-4 block text-[12px] md:text-[14px]">Tetap Terhubung</span>
+        <h2 class="reveal delay-100 font-headline-xl text-headline-xl-mobile md:text-headline-xl gradient-text mb-5">Hubungi Kami</h2>
+        <p class="reveal delay-200 font-body-md text-body-md text-[#8b90a7] max-w-lg mx-auto leading-relaxed">
+            Ada pertanyaan atau ingin merencanakan kunjungan? Tim kami siap membantu Anda merencanakan petualangan tak terlupakan di Desa Tugurejo.
         </p>
     </div>
-    <div class="reveal delay-100 flex flex-col gap-5">
-        <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Hubungi Kami</h4>
-        <div class="flex flex-col gap-3">
-            <!-- Instagram -->
-            <a class="flex items-center gap-3 bg-surface-container-low rounded-xl px-4 py-3 group hover:bg-primary/10 transition-all duration-300" href="https://instagram.com/pemdes_tugurejo" target="_blank" rel="noopener noreferrer" id="footer-instagram">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <!-- LEFT: Contact Cards -->
+        <div class="flex flex-col gap-5">
+            <!-- WhatsApp Card -->
+            <a class="reveal glass-card p-5 md:p-6 flex items-center gap-5 group" href="https://wa.me/6285843775727" target="_blank" rel="noopener noreferrer" id="contact-whatsapp">
+                <div class="contact-icon-wrap bg-gradient-to-br from-[#25D366] to-[#128C7E]">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-label-md text-[12px] text-on-surface-variant/60 uppercase tracking-wider">Instagram</span>
-                    <span class="font-body-md text-[14px] md:text-body-md text-on-surface group-hover:text-primary transition-colors">@pemdes_tugurejo</span>
+                    <span class="font-label-md text-[11px] text-[#7B9AFC]/60 uppercase tracking-[0.15em] mb-1">WhatsApp</span>
+                    <span class="font-body-md text-[16px] md:text-[18px] text-white font-semibold group-hover:text-[#CDF22B] transition-colors duration-300">+62 858-4377-5727</span>
+                    <span class="font-body-md text-[13px] text-[#8b90a7] mt-0.5">Chat langsung dengan kami</span>
                 </div>
+                <span class="material-symbols-outlined text-[#7B9AFC]/40 ml-auto text-[20px] group-hover:text-[#CDF22B] group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
             </a>
-            <!-- WhatsApp -->
-            <a class="flex items-center gap-3 bg-surface-container-low rounded-xl px-4 py-3 group hover:bg-primary/10 transition-all duration-300" href="https://wa.me/6285843775727" target="_blank" rel="noopener noreferrer" id="footer-whatsapp">
-                <div class="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+
+            <!-- Instagram Card -->
+            <a class="reveal delay-100 glass-card p-5 md:p-6 flex items-center gap-5 group" href="https://instagram.com/pemdes_tugurejo" target="_blank" rel="noopener noreferrer" id="contact-instagram">
+                <div class="contact-icon-wrap bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888]">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-label-md text-[12px] text-on-surface-variant/60 uppercase tracking-wider">WhatsApp</span>
-                    <span class="font-body-md text-[14px] md:text-body-md text-on-surface group-hover:text-primary transition-colors">+62 85843775727</span>
+                    <span class="font-label-md text-[11px] text-[#7B9AFC]/60 uppercase tracking-[0.15em] mb-1">Instagram</span>
+                    <span class="font-body-md text-[16px] md:text-[18px] text-white font-semibold group-hover:text-[#CDF22B] transition-colors duration-300">@pemdes_tugurejo</span>
+                    <span class="font-body-md text-[13px] text-[#8b90a7] mt-0.5">Follow untuk update terbaru</span>
                 </div>
+                <span class="material-symbols-outlined text-[#7B9AFC]/40 ml-auto text-[20px] group-hover:text-[#CDF22B] group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
             </a>
+
+            <!-- Location Card -->
+            <div class="reveal delay-200 glass-card p-5 md:p-6 flex items-start gap-5">
+                <div class="contact-icon-wrap bg-gradient-to-br from-[#1E45FB] to-[#4D6FFC]">
+                    <span class="material-symbols-outlined text-white text-[26px]">location_on</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-label-md text-[11px] text-[#7B9AFC]/60 uppercase tracking-[0.15em] mb-1">Alamat</span>
+                    <span class="font-body-md text-[15px] md:text-[16px] text-white font-semibold leading-relaxed">Desa Tugurejo</span>
+                    <span class="font-body-md text-[13px] md:text-[14px] text-[#8b90a7] mt-1 leading-relaxed">Kecamatan Wates, Kabupaten Blitar,<br/>Jawa Timur, Indonesia</span>
+                </div>
+            </div>
+
+            <!-- Operating Hours Card -->
+            <div class="reveal delay-300 glass-card p-5 md:p-6 flex items-start gap-5">
+                <div class="contact-icon-wrap bg-gradient-to-br from-[#CDF22B] to-[#a8cc00]">
+                    <span class="material-symbols-outlined text-[#1a1a00] text-[26px]">schedule</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-label-md text-[11px] text-[#7B9AFC]/60 uppercase tracking-[0.15em] mb-1">Jam Operasional</span>
+                    <span class="font-body-md text-[15px] md:text-[16px] text-white font-semibold">Setiap Hari</span>
+                    <span class="font-body-md text-[13px] text-[#8b90a7] mt-1">06:00 – 18:00 WIB</span>
+                </div>
+            </div>
         </div>
-        <!-- Alamat -->
-        <div class="flex items-start gap-3 mt-1">
-            <span class="material-symbols-outlined text-[20px] mt-0.5 text-primary">location_on</span>
-            <p class="font-body-md text-[14px] md:text-body-md text-on-surface-variant leading-relaxed">
-                Desa Tugurejo, Kecamatan Wates,<br/>Kabupaten Blitar, Jawa Timur, Indonesia
-            </p>
+
+        <!-- RIGHT: Map + WhatsApp CTA -->
+        <div class="flex flex-col gap-6">
+            <!-- Map -->
+            <div class="reveal delay-100 map-wrapper flex-grow">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15807.234!2d112.145!3d-8.165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78f1e0e0e0e0e1%3A0x0!2sDesa%20Tugurejo%2C%20Wates%2C%20Blitar!5e0!3m2!1sid!2sid!4v1690000000000!5m2!1sid!2sid" 
+                    width="100%" height="320" style="border:0; border-radius: 1rem; display: block; filter: brightness(0.7) contrast(1.1) saturate(0.8);" 
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta lokasi Desa Tugurejo">
+                </iframe>
+            </div>
+
+            <!-- WhatsApp CTA Card -->
+            <div class="reveal delay-200 glass-card p-6 md:p-8 text-center">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center mx-auto mb-5">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <h3 class="font-headline-md text-[20px] md:text-[22px] text-white mb-2">Siap Menjelajah?</h3>
+                <p class="font-body-md text-[14px] text-[#8b90a7] mb-6 leading-relaxed">Hubungi kami langsung via WhatsApp untuk informasi lebih lanjut atau reservasi tempat wisata.</p>
+                <a href="https://wa.me/6285843775727" target="_blank" rel="noopener noreferrer" class="cta-whatsapp-btn" id="contact-cta-wa">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat via WhatsApp
+                </a>
+            </div>
         </div>
     </div>
 </div>
-<div class="mt-10 md:mt-12 pt-8 border-t border-outline-variant/30 px-4 md:px-margin-desktop max-w-container-max mx-auto text-center">
-    <p class="font-body-md text-[13px] md:text-body-md text-on-surface-variant opacity-60">
-        © 2026 Desa Tugurejo. All rights reserved.
-    </p>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer w-full py-8 md:py-10">
+<div class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex flex-col items-center md:items-start gap-2">
+            <span class="font-headline-md text-[18px] md:text-[20px] gradient-text">Desa Tugurejo</span>
+            <p class="font-body-md text-[13px] text-[#5a5f78] text-center md:text-left">
+                Membawa Anda lebih dekat dengan alam melalui pariwisata berkelanjutan.
+            </p>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="https://instagram.com/pemdes_tugurejo" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#1E45FB]/20 hover:border-[#1E45FB]/40 transition-all duration-300" aria-label="Instagram">
+                <svg class="w-4 h-4 text-[#7B9AFC]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://wa.me/6285843775727" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#25D366]/20 hover:border-[#25D366]/40 transition-all duration-300" aria-label="WhatsApp">
+                <svg class="w-4 h-4 text-[#7B9AFC]" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+        </div>
+    </div>
+    <div class="mt-6 pt-6 border-t border-white/5 text-center">
+        <p class="font-body-md text-[12px] md:text-[13px] text-[#4a4f68]">
+            © 2026 Desa Tugurejo. Crafted with 💚 for sustainable tourism.
+        </p>
+    </div>
 </div>
 </footer>
 
@@ -1011,6 +1303,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
 
     // ===== Trigger initial reveal for hero =====
     setTimeout(() => {
